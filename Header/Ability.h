@@ -1,15 +1,15 @@
 #pragma once
 
-#include "BasePlayer.h"
+#include "Player.h"
 namespace
 {
-	void Debuff_Ability(BasePlayer* user, BasePlayer* opponent)
+	void Debuff_Ability(Player& user, Player& opponent)
 	{
-		opponent->modifHealth(-5);
+		opponent.modifHealth(-5);
 	}
 
-	void Armor_Ability(BasePlayer* user, BasePlayer* opponent)
+	void Armor_Ability(Player& user, Player& opponent)
 	{
-		user->modifHealth(5);
+		user.modifHealth(5);
 	}
 }

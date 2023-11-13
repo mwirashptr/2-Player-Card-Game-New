@@ -37,15 +37,15 @@ void Board::initCardStack()
 	int index = 1;
 	for (int i = 1; i <= 5; i++)
 	{
-		for (int j = 1; j <= 5; j++)
+		for (int j = 3; j <= 7; j++)
 		{
-			Card* temp = new DebuffCard;
+			Card* temp = new DebuffCard(j);
 			setCardStack(temp, index);
 			index++;
 		}
 		for (int j = 1; j <= 5; j++)
 		{
-			Card* temp = new ArmorCard;
+			Card* temp = new ArmorCard(j);
 			setCardStack(temp, index);
 			index++;
 		}
@@ -54,16 +54,11 @@ void Board::initCardStack()
 
 Card* Board::takeFrontCard()
 {
-	std::cout << "CardStackSize " << getCardStackSize();
-	std::cout << "BeforeGetCardStack";
 	Card* temp = getCardStack(1);
-	std::cout << "BeforeGetCardstackSize";
 	for (int i = 0; i < getCardStackSize() - 1; i++)
 	{
 		cardStack[i] = cardStack[i + 1];
-		std::cout << " moveCard " << i;
 	}
-	std::cout << "before empty";
 	Card* empty = new DefaultCard;
 	setCardStack(empty, getCardStackSize());
 	return temp;

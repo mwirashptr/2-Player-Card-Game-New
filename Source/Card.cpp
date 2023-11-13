@@ -26,7 +26,6 @@ void Card::setNickname(std::string input)
 {
 	nickname = input;
 }
-
 int Card::getNumber()
 {
 	return number;

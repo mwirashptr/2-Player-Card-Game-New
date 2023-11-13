@@ -3,6 +3,8 @@
 #include <iostream>
 #include <array>
 
+class Player;
+
 class BasePlayer
 {
 protected:

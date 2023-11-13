@@ -7,9 +7,7 @@ Player::Player()
 
 void Player::setDeck(Card* input, int index)
 {
-	std::cout << " before set deck ";
 	deck[index - 1] = input;
-	std::cout << " After set deck ";
 }
 
 Card* Player::getCard(int index)

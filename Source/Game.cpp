@@ -4,7 +4,6 @@ void Game::randomCardStack()
 {
 	for (int i = 1; i <= 50; i++)
 	{
-		cout << " Tes tes " << i;
 		int random = rand() % 50 + 1;
 		Card* temp = getCardStack(random);
 		setCardStack(getCardStack(i), random);
@@ -32,12 +31,9 @@ void Game::giveAnotherCard()
 
 void Game::initPlayer()
 {
-	std::cout << "InitPlayer Before";
 	Player_1.setHealth(50);
 	Player_2.setHealth(50);
-	std::cout << "Before GIVE5CARD";
 	give5Card();
-	std::cout << "InitPlayer After";
 }
 
 void Game::abilityTurn(int input) //input = comparing damage
@@ -56,11 +52,11 @@ void Game::abilityTurn(int input) //input = comparing damage
 	{
 		if (input == 1)
 		{
-			getChosenCard(input)->ability(&Player_1, &Player_2);
+			getChosenCard(input)->ability(Player_1, Player_2);
 		}
 		else if (input == 2)
 		{
-			getChosenCard(input)->ability(&Player_2, &Player_1);
+			getChosenCard(input)->ability(Player_2, Player_1);
 		}
 		input += temp;
 	}
@@ -73,14 +69,14 @@ void Game::damageTurn(int input) // input = comparing type
 		int damage;
 		damage = getChosenCard(PLAYER1)->getNumber() - getChosenCard(PLAYER2)->getNumber();
 		if (damage < 0) Player_1.modifHealth(damage);
-		else if (damage > getChosenCard(PLAYER2)->getNumber()) Player_2.modifHealth(-damage);
+		else if (damage > 0) Player_2.modifHealth(-damage);
 	}
 	else if (input == 2) // jika attack lebih kecil dari defense, maka selisih akan dipantulkan
 	{
 		int damage;
 		damage = getChosenCard(PLAYER2)->getNumber() - getChosenCard(PLAYER1)->getNumber();
 		if (damage < 0) Player_2.modifHealth(damage);
-		else if (damage > getChosenCard(PLAYER1)->getNumber()) Player_1.modifHealth(-damage);
+		else if (damage > 0) Player_1.modifHealth(-damage);
 	}
 	else if (input == 3)
 	{
@@ -159,13 +155,9 @@ void Game::theGame()
 void Game::Play()
 {
 	mainMenu();
-	cout << "Main Menu Tuntas";
 	initCardStack();
-	cout << "InitCard Tuntas";
 	randomCardStack();
-	cout << "randomCard Tuntas";
 	initPlayer();
-	cout << "InitPlayer Tuntas";
 
 	int run = 0;
 	while (!run)

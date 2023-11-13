@@ -13,7 +13,7 @@ public:
 		setAbilityDesc("");
 		setNickname("");
 	}
-	void ability(BasePlayer* user, BasePlayer* opponent) override
+	void ability(Player& user, Player& opponent) override
 	{
 	}
 };
@@ -21,55 +21,31 @@ public:
 class DebuffCard : public Card
 {
 public:
-	DebuffCard()
+	DebuffCard(int _number)
 	{
-		setNumber(5);
+		setNumber(_number);
 		setCardType('A');
 		setAbilityDesc("It is a Debuff Card");
-		setNickname("5A");
+		setNickname("" + std::to_string(_number) + getCardType());
 	}
-	void ability(BasePlayer* user, BasePlayer* opponent) override
+	void ability(Player& user, Player& opponent) override
 	{
-		//Debuff_Ability(user, opponent);
+		Debuff_Ability(user, opponent);
 	}
-	/*int getNumber() { return number; };
-	char getCardType() { return cardType; };
-	std::string getAbilityDesc() { return abilityDesc; };
-	std::string getNickname() { return nickname; };*/
 };
-/*DebuffCard::DebuffCard()
-{
-	setNumber(5);
-	setCardType('A');
-	setAbilityDesc("It is a Debuff Card");
-	std::string temp = "";
-	setNickname(temp + char(getNumber() + '0') + getCardType());
-}*/
 
 class ArmorCard : public Card
 {
 public:
-	ArmorCard()
+	ArmorCard(int _number)
 	{
-		setNumber(5);
+		setNumber(_number);
 		setCardType('D');
 		setAbilityDesc("It is an Armor Card");
-		setNickname("5D");
+		setNickname("" + std::to_string(_number) + getCardType());
 	}
-	void ability(BasePlayer* user, BasePlayer* opponent) override
+	void ability(Player& user, Player& opponent) override
 	{
 		Armor_Ability(user, opponent);
 	}
-	/*int getNumber() { return number; };
-	char getCardType() { return cardType; };
-	std::string getAbilityDesc() { return abilityDesc; };
-	std::string getNickname() { return nickname; };*/
 };
-/*ArmorCard::ArmorCard()
-{
-	setNumber(5);
-	setCardType('D');
-	setAbilityDesc("It is an Armor Card");
-	std::string temp = "";
-	setNickname(temp + char(getNumber() + '0') + getCardType());
-}*/

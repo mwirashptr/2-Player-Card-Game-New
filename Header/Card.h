@@ -22,5 +22,5 @@ public:
 	std::string getAbilityDesc();
 	std::string getNickname();
 
-	virtual void ability(BasePlayer* user, BasePlayer* opponent) = 0;
+	virtual void ability(Player& user, Player& opponent) = 0;
 };
